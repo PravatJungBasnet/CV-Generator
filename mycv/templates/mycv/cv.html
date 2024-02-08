@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load static %}
+<html>
+<head>
+
+	<title>Cv Generator</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
+	<link rel="stylesheet" type="text/css" href="{% static 'mycv/css/.css' %}" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+	<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+	
+
+
+
+
+</head>
+<style>
+	img {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+        @media print {
+            #pdf {
+                display: none;
+            }
+        }
+		#pdf {
+  display: block;
+}
+
+		@page {
+        margin: 0;
+      }
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+      
+
+</style>
+<body>
+<div id="invoice">
+<div id="doc2" class="yui-t7">
+	<div id="inner">
+	
+		<div id="hd">
+			<div class="yui-gc">
+				<div class="yui-u first">
+					<img src="{{res.image.url}}" alt="">
+					<h1>{{res.name}}</h1>
+					
+				</div>
+
+				<div class="yui-u">
+					<div class="contact-info">
+						
+						<h3><a href="mailto:{{res.email}}">{{res.email}}</a></h3>
+						
+					</div><!--// .contact-info -->
+				</div>
+			</div><!--// .yui-gc -->
+		</div><!--// hd -->
+      
+		<div id="bd">
+			<div id="yui-main">
+				<div class="yui-b">
+
+					<div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Identity Information</h2>
+						</div>
+						<div class="yui-u">
+                            <p class="enlarge">Name: 
+                                {{res.name}}
+    
+                                </p>
+							<p class="enlarge">
+                            Email: {{res.email}}
+
+							</p>
+                            
+                            <p class="enlarge">
+                                phone_number: 
+                                {{res.phone_number}}
+    
+                                </p>
+                                <p class="enlarge">
+                                    DOB: {{res.DOB}}
+        
+                                    </p>
+                                    <p class="enlarge">
+                                       Country: {{res.nationality}}
+            
+                                        </p>
+
+						</div>
+					</div><!--// .yui-gf -->
+                    
+		<div id="bd">
+			<div id="yui-main">
+				<div class="yui-b">
+
+					<div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Education</h2>
+						</div>
+						<div class="yui-u">
+                            <p class="enlarge">School: {{res.school}}
+    
+                                </p>
+							<p class="enlarge">
+                            University: {{res.university}}
+
+							</p>
+                            
+                            <p class="enlarge">
+                                Graduated year: 
+                                {{res.Graduated_year}}
+    
+                                </p>
+                                
+
+						</div>
+					</div><!--// .yui-gf -->
+
+					<div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Skills</h2>
+						</div>
+						<div class="yui-u">
+
+								<div class="talent">
+									
+									<p>{{res.skills}}	</p>
+								</div>
+
+								
+					</div><!--// .yui-gf -->
+
+
+					<div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Experience</h2>
+						</div>
+						<div class="yui-u">
+                            <p class="enlarge"> {{res.Experience}}
+    
+                                </p>
+                                
+							
+                                
+
+						</div>
+					</div><!--// .yui-gf -->
+                    <div class="yui-gf">
+						<div class="yui-u first">
+							<h2>Previous Work</h2>
+						</div>
+						<div class="yui-u">
+                            <p class="enlarge"> {{res.previous_work}}
+    
+                                </p>
+                                
+							
+                                
+
+						</div>
+					</div><!--// .yui-gf -->
+                    
+
+
+
+
+					<div class="yui-gf last">
+						<div class="yui-u first">
+							<h2>About You</h2>
+						</div>
+						<div class="yui-u">
+							<p class="enlarge"> {{res.about_you}}
+    
+                            </p>
+						</div>
+					</div><!--// .yui-gf -->
+                    <hr>
+                    <br>
+                    <div class="yui-gf last">
+						<div class="yui-u first">
+							<h2>Git Hub Profile</h2>
+						</div>
+						<div class="yui-u">
+							<a href="{{res.github}}" target="_blank"> {{res.github}} </a>
+						</div>
+					</div><!--// .yui-gf -->
+
+
+				</div><!--// .yui-b -->
+			</div><!--// yui-main -->
+		</div><!--// bd -->
+
+		<div id="ft">
+			<p>{{res.name}} &mdash; <a href="mailto:{{res.email}}">{{res.email}}</a> </p>
+		</div><!--// footer -->
+		<div>
+
+	</div><!-- // inner -->
+
+
+</div><!--// doc -->
+</div>
+
+<button class="button " id="pdf">Download pdf</button>
+
+
+
+
+
+<script>
+   document.getElementById('pdf').addEventListener('click', function () {
+  // Hide the button before printing
+  this.style.display = 'none';
+
+  // Trigger the print process
+  window.print();
+
+  // Show the button after printing is done
+  this.style.display = 'block';
+});
+
+</script>
+
+
+</body>
+</html>
+

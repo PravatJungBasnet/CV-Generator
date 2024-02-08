@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'mycv/css/bootstrap.min.css' %}">
+    <style>
+        .container{
+        border: 5px solid;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        }
+        .out{
+            float: right;
+        }
+        .nav-item {
+            text-align:left;
+        }
+       
+        .navbar{
+            background-color:#d6d6d6;
+        }
+        </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary navbar fs-4 ms-0 ">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Navbar brand -->
+          <a class="navbar-brand me-2" href="#">Cv Gen
+          </a>
+      
+          <!-- Toggle button -->
+          <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+      
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+              <li class="nav-item ms-2">
+                <a class="nav-link ms-2" href="#">Home</a>
+              </li>
+            </ul>
+            <!-- Left links -->
+            {% if request.user.is_authenticated %}
+            <div class="d-flex align-items-center text-decoration-none me-auto"> Hello {{request.user|title}}
+    
+            </div>
+    
+      
+            <div class="d-flex align-items-center text-decoration-none ">
+              <a href="#" class="text-decoration-none text-dark me-5 ">Logout</a>
+       
+            </div>
+            {% endif %}
+          </div>
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    <div class="row">
+        <div class="col-lg-3 shadow mx-auto p-0 mt-5">
+            <h2 class=" mt-5 text-center mx-auto">SignUp</h2>
+            <form action="" method="post" class=" ms-5 mt-5 me-5 form-label" >
+                {% csrf_token %}
+                {% for form in fm %}
+                {{form.label_tag}}
+                {{form}}
+                {{form.error}}
+                <br>
+                
+                {% endfor %}
+                <div class=" ms-5 me-5 alert alert-primary rounded-pill text-center">
+                <input type="submit" value="SignUp" class="btn btn-outline-primary rounded-pill border-0 fs-5 ">
+            </div>
+               
+            </form>
+            <div class="text-center ms-5">
+            <a href="#" class="">Alreday have an account?</a>
+            </div>
+            <br>
+            </div>
+    </div>
+</body>
+</html>

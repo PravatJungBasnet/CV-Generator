@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'mycv/css/bootstrap.min.css' %}">
+</head>
+<style>
+    input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=url] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=date] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=nationality] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=text] ,text{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input[type=text],  textarea {
+  width: 100%;
+  padding: 12px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.container-fluid{
+  background-color: #F0EBF4 ;
+  
+}
+#form
+{
+  background-color:#A1C3D1;
+}
+#btn{
+  background-color:#04AA6D ;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+</style>
+<div class="container-fluid">
+<body>
+    <h1 class="mt-3 text-center  alert alert-success text-success" id="header">Cv Generator</h1>
+
+    <h3 class=" mt-5 ms-5 text-center">Please fill up to generate CV </h3>
+
+
+<div class="row">
+    <div class="col-lg-6 shadow mx-auto mt-5 my-5 text-dark"  id="form">
+<form action="" method="post" class="mt-5  "  enctype="multipart/form-data">
+    {% csrf_token %}
+{% for form in fm %}
+{{form.label_tag}}
+{{form}}
+
+{{form.errors}}
+<br>
+<br>
+{% endfor %}
+<input type="submit" value="Generate CV" id='btn'class="">
+<br>
+<br>
+
+</div>
+</form>
+</div>
+</body>
+</div>
+</html>
